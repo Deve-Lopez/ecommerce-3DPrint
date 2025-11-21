@@ -1,0 +1,12 @@
+import ProductList from "../ProductList/ProductList"
+
+
+const Home = () => {
+  return (
+    <>
+    <ProductList/>
+    </>
+  )
+}
+
+export default Home

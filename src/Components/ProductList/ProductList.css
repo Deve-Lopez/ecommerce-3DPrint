@@ -1,0 +1,149 @@
+/* --- LAYOUT PRINCIPAL (CONTENEDOR) --- */
+.main-content {
+    display: flex;          /* Activa el modo columnas */
+    gap: 2rem;              /* Espacio entre la barra lateral y los productos */
+    padding: 2rem 1rem;     /* Un poco más de padding arriba/abajo */
+    align-items: flex-start; /* Asegura que los elementos empiecen desde arriba */
+}
+
+/* --- COLUMNA IZQUIERDA: FILTROS --- */
+.filters {
+    width: 250px;       /* Ancho fijo para la barra lateral */
+    flex-shrink: 0;     /* Evita que la barra se encoja si falta espacio */
+}
+
+.filters h2 {
+    font-size: 18px;
+    margin-top: 0;      /* Elimina margen superior para alinear con el título de la derecha */
+    margin-bottom: 1rem;
+    text-transform: uppercase; /* Opcional: estilo similar al título de productos */
+    letter-spacing: 1px;
+}
+
+.filter-category {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px; /* Pequeño borde redondeado */
+}
+
+.filters-category h3 {
+    margin-bottom: 1rem;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.filter-category label {
+    display: flex;          /* Mejor alineación checkbox-texto */
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.filter-category span {
+    font-size: 14px;
+    margin-left: 0.5rem;    /* Espacio entre checkbox y texto */
+}
+
+/* Reset de inputs */
+.filters label input,
+input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: #E4C7B8; /* Color del checkbox activo */
+}
+
+
+/* --- COLUMNA DERECHA: COLECCIONES (Título + Grid) --- */
+.collections {
+    flex: 1; /* Ocupa todo el espacio restante a la derecha */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabecera de la sección derecha (Título y Select) */
+.options {
+    display: flex;
+    justify-content: space-between; /* Separa título a la izq y select a la der */
+    align-items: center;    /* Centrado vertical */
+    margin-bottom: 1.5rem;  /* Espacio antes de empezar los productos */
+}
+
+.options h2 {
+    margin: 0;              /* Elimina márgenes para alinear con "Filtros" */
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.sort-options label {
+    font-size: 14px;
+    color: #555;
+}
+
+.sort-options select {
+    margin-left: 0.5rem;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* --- GRID DE PRODUCTOS --- */
+.products {
+    display: grid;
+    /* Responsive: Mínimo 220px por tarjeta, rellena el espacio */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tarjeta de Producto */
+.product-card {
+    background-color: #fff;
+    text-align: left;       /* Alineación del texto dentro de la tarjeta */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Contenedor de imagen para manejar el zoom */
+.product-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;    /* Mantiene las imágenes cuadradas (opcional) */
+    object-fit: cover;      /* Recorta la imagen si no es cuadrada */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+}
+
+.product-card img:hover {
+    transform: scale(1.05); /* Zoom suave al pasar el ratón */
+}
+
+/* Textos de la tarjeta */
+.product-card h3 {
+    font-size: 15px;
+    margin: 0.5rem 0;
+    font-weight: 500;
+    color: #333;
+}
+
+.product-card p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #A47764; /* Tu color de énfasis */
+    margin: 0;
+}
+
+/* Mensaje de error */
+.error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
