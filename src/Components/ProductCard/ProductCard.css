@@ -1,0 +1,149 @@
+/* ProductCard.css */
+
+/* --- TARJETA DE PRODUCTO --- */
+.product-card {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  /* padding: 1rem;  <-- ELIMINADO: Quitamos el padding global para que la imagen crezca */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* IMPORTANTE: Para que la imagen respete los bordes redondeados de la tarjeta */
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-light);
+}
+
+/* Imagen */
+.product-card__image-wrapper {
+  width: 100%;
+  /* aspect-ratio: 1 / 1; <-- ANTES: Cuadrada */
+  aspect-ratio: 4 / 5; /* NUEVO: Un poco más alta (vertical) para que se vea más grande */
+  overflow: hidden;
+  /* border-radius: 8px; <-- ELIMINADO: Ya no hace falta porque la tarjeta recorta */
+  margin-bottom: 0; /* ELIMINADO: Quitamos el margen inferior para pegar la info */
+  background-color: var(--bg-gray);
+  border-bottom: 1px solid #f0f0f0; /* Una línea sutil separando imagen de info */
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.05);
+}
+
+/* Info */
+.product-card__info {
+  text-align: left;
+  padding: 0.8rem; /* NUEVO: Añadimos el padding aquí, un poco más compacto (antes era 1rem global) */
+}
+
+.product-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0 0 0.25rem 0; /* Reducido de 0.5rem a 0.25rem */
+  line-height: 1.3;
+  
+  /* Opcional: Limitar a 2 líneas si el título es muy largo */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card__price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #56453F;
+  margin: 0 0 0.75rem 0; /* Reducido de 1rem a 0.75rem */
+}
+
+/* --- Selector de Cantidad --- */
+.quantity-selector {
+  display: flex;
+  flex-direction: row; /* CAMBIO: Ponemos etiqueta y controles en la misma línea para ahorrar altura */
+  align-items: center;
+  justify-content: space-between; /* Separar "Cantidad:" de los botones */
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.quantity-selector__label {
+  font-size: 0.8rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.quantity-selector__controls {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.btn-quantity {
+  background-color: var(--bg-gray);
+  border: none;
+  padding: 4px 10px; /* Un poco más compacto */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--primary-color);
+  transition: background 0.2s;
+}
+
+.btn-quantity:hover {
+  background-color: #e5e7eb;
+}
+
+/* Estilos para el botón deshabilitado */
+.btn-quantity:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #e5e7eb;
+}
+
+.quantity-display {
+  min-width: 25px; /* Reducido un poco */
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* --- Alertas de Stock (Nuevo) --- */
+.stock-alert {
+    margin-top: 0.5rem; /* Reducido de 1rem */
+    padding-top: 0.5rem; /* Reducido de 1rem */
+    border-top: 1px dashed var(--border-color);
+    text-align: center;
+}
+
+.low-stock {
+    font-size: 0.85rem; /* Un pelín más pequeño */
+    font-weight: 600;
+    color: #B00100;
+    margin: 0; /* Asegurar que no tenga margen extra */
+}
+
+.no-stock {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #F0F0E5;
+    padding: 0.4rem;
+    background-color: #56453F;
+    border-radius: 4px;
+    margin: 0;
+}

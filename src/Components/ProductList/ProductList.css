@@ -1,149 +1,122 @@
-/* --- LAYOUT PRINCIPAL (CONTENEDOR) --- */
+/* ProductList.css */
+
+/* --- VARIABLES GLOBALES --- */
+/* Las definimos aquí para que las herede ProductCard también */
+:root {
+  --primary-color: #333333;
+  --secondary-color: #666666;
+  --accent-color: #A47764;
+  --accent-light: #E4C7B8;
+  --bg-gray: #f9fafb;
+  --border-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* --- LAYOUT GENERAL --- */
+.shop-layout {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* --- SIDEBAR (FILTROS) --- */
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.sidebar__title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+}
+
+.filter-group {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: white;
+}
+
+.filter-group__title {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+.filter-option input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--accent-color);
+  width: 16px;
+  height: 16px;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
 .main-content {
-    display: flex;          /* Activa el modo columnas */
-    gap: 2rem;              /* Espacio entre la barra lateral y los productos */
-    padding: 2rem 1rem;     /* Un poco más de padding arriba/abajo */
-    align-items: flex-start; /* Asegura que los elementos empiecen desde arriba */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-/* --- COLUMNA IZQUIERDA: FILTROS --- */
-.filters {
-    width: 250px;       /* Ancho fijo para la barra lateral */
-    flex-shrink: 0;     /* Evita que la barra se encoja si falta espacio */
+/* Header de la sección principal */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.filters h2 {
-    font-size: 18px;
-    margin-top: 0;      /* Elimina margen superior para alinear con el título de la derecha */
-    margin-bottom: 1rem;
-    text-transform: uppercase; /* Opcional: estilo similar al título de productos */
-    letter-spacing: 1px;
+.content-header__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--primary-color);
+  text-transform: uppercase;
 }
 
-.filter-category {
-    padding: 1rem;
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 4px; /* Pequeño borde redondeado */
+.sort-control {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
 }
 
-.filters-category h3 {
-    margin-bottom: 1rem;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.filter-category label {
-    display: flex;          /* Mejor alineación checkbox-texto */
-    align-items: center;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.filter-category span {
-    font-size: 14px;
-    margin-left: 0.5rem;    /* Espacio entre checkbox y texto */
-}
-
-/* Reset de inputs */
-.filters label input,
-input[type="checkbox"] {
-    margin: 0;
-    padding: 0;
-    width: 16px;
-    height: 16px;
-    accent-color: #E4C7B8; /* Color del checkbox activo */
-}
-
-
-/* --- COLUMNA DERECHA: COLECCIONES (Título + Grid) --- */
-.collections {
-    flex: 1; /* Ocupa todo el espacio restante a la derecha */
-    display: flex;
-    flex-direction: column;
-}
-
-/* Cabecera de la sección derecha (Título y Select) */
-.options {
-    display: flex;
-    justify-content: space-between; /* Separa título a la izq y select a la der */
-    align-items: center;    /* Centrado vertical */
-    margin-bottom: 1.5rem;  /* Espacio antes de empezar los productos */
-}
-
-.options h2 {
-    margin: 0;              /* Elimina márgenes para alinear con "Filtros" */
-    font-size: 24px;
-    font-weight: 700;
-    color: #333;
-}
-
-.sort-options label {
-    font-size: 14px;
-    color: #555;
-}
-
-.sort-options select {
-    margin-left: 0.5rem;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
+.sort-control select {
+  margin-left: 0.5rem;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
 }
 
 /* --- GRID DE PRODUCTOS --- */
-.products {
-    display: grid;
-    /* Responsive: Mínimo 220px por tarjeta, rellena el espacio */
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
 }
 
-/* Tarjeta de Producto */
-.product-card {
-    background-color: #fff;
-    text-align: left;       /* Alineación del texto dentro de la tarjeta */
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Contenedor de imagen para manejar el zoom */
-.product-card img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;    /* Mantiene las imágenes cuadradas (opcional) */
-    object-fit: cover;      /* Recorta la imagen si no es cuadrada */
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    margin-bottom: 0.5rem;
-    border-radius: 4px;
-}
-
-.product-card img:hover {
-    transform: scale(1.05); /* Zoom suave al pasar el ratón */
-}
-
-/* Textos de la tarjeta */
-.product-card h3 {
-    font-size: 15px;
-    margin: 0.5rem 0;
-    font-weight: 500;
-    color: #333;
-}
-
-.product-card p {
-    font-size: 16px;
-    font-weight: 700;
-    color: #A47764; /* Tu color de énfasis */
-    margin: 0;
-}
-
-/* Mensaje de error */
+/* Mensaje de Error General */
 .error-message {
-    color: red;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
+  color: #ef4444;
+  font-weight: bold;
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 2rem;
+  background: #fef2f2;
+  border-radius: 8px;
 }
