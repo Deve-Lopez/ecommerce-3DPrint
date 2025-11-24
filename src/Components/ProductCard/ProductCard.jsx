@@ -1,32 +1,37 @@
 import { useState } from "react";
 import "./ProductCard.css";
+// ❌ IMPORTANTE: Eliminamos la importación de `useNavigate` ya que el padre maneja la navegación.
 
 const BASE_IMAGEN_URL = "http://localhost/3dprint/images/";
 
-const ProductCard = ({ producto }) => {
+// 🟢 CORREGIDO: Recibimos 'onImageClick' como prop del componente padre
+const ProductCard = ({ producto, onImageClick }) => {
+    
+    // ❌ Eliminamos la línea: const navigate = useNavigate()
+    
     const [cantidad, setCantidad] = useState(0);
 
-    // 🎯 NUEVA VARIABLE para verificar si hay stock
+    // Variables de estado
     const isAvailable = producto.stock > 0;
-    // 🎯 NUEVA VARIABLE para verificar si está agotado
-    const isOutOfStock = producto.stock === 0;
+    // const isOutOfStock = producto.stock === 0; // Se puede simplificar
 
-    // Las funciones de incremento/decremento se mantienen igual.
+    // Funciones de control de cantidad
     const handleIncrement = () => setCantidad(prev => prev + 1);
     const handleDecrement = () => setCantidad(prev => (prev > 0 ? prev - 1 : 0));
 
-    // Si el producto está agotado, forzamos la cantidad a 0 al renderizar.
-    // Esto es una medida de seguridad, aunque el UI lo maneje.
-    // Aunque técnicamente no es necesario forzar la cantidad a 0 aquí si se usa bien el 'disabled'.
+    // ❌ Eliminamos la función handleImagenClick interna
 
     return (
         <article className="product-card">
-            {/* ... Imagen y Títulos ... */}
+            
             <div className="product-card__image-wrapper">
                 <img
                     src={`${BASE_IMAGEN_URL}${producto.imagen_url}`}
                     alt={producto.nombre}
                     className="product-card__image"
+                    // 🟢 CORRECCIÓN CLAVE: Llamamos a la función recibida por prop
+                    // Esta función (onImageClick) es la que hace el `Maps()`
+                    onClick={() => onImageClick(producto.id)} 
                 />
             </div>
 
@@ -38,48 +43,51 @@ const ProductCard = ({ producto }) => {
                     <span className="quantity-selector__label">Cantidad:</span>
                     <div className="quantity-selector__controls">
 
-                        {/* 🎯 CAMBIO CLAVE: Aplicamos la propiedad 'disabled' */}
                         <button
                             onClick={handleDecrement}
                             className="btn-quantity"
-                            disabled={!isAvailable || cantidad === 0} // Deshabilitado si no está disponible O si la cantidad es 0
+                            // Deshabilitado si no hay stock O si la cantidad es 0
+                            disabled={!isAvailable || cantidad === 0} 
                         >
                             -
                         </button>
 
                         <span className="quantity-display">{cantidad}</span>
 
-                        {/* 🎯 CAMBIO CLAVE: Aplicamos la propiedad 'disabled' */}
                         <button
                             onClick={handleIncrement}
                             className="btn-quantity"
-                            disabled={!isAvailable || cantidad >= producto.stock} // Deshabilitado si no está disponible O si la cantidad ya es el stock máximo
+                            // Deshabilitado si no hay stock O si ya alcanzó el stock máximo
+                            disabled={!isAvailable || cantidad >= producto.stock} 
                         >
                             +
                         </button>
+
+                        
                     </div>
                 </div>
 
                 <div className="stock-alert">
-{producto.stock === 0 ? (
-        // CAMINO 1: Agotado (Stock es 0)
-        <p className="no-stock">
-            ¡Agotado!
-        </p>
-    ) : producto.stock === 1 ? (
-        // CAMINO 2: Última Unidad (Stock es 1)
-        <p className="low-stock">
-            ¡ÚLTIMA UNIDAD!
-        </p>
-    ) : producto.stock > 1 && producto.stock < 10 ? (
-        // CAMINO 3: Stock bajo (Stock es entre 2 y 9)
-        <p className="low-stock">
-            ¡Solo quedan {producto.stock} unidades!
-        </p>
-    ) : (
-        // CAMINO 4: Stock suficiente (Stock >= 10)
-        null                    )}
-                </div>            </div>
+                    {producto.stock === 0 ? (
+                        // CAMINO 1: Agotado
+                        <p className="no-stock">
+                            ¡Agotado!
+                        </p>
+                    ) : producto.stock === 1 ? (
+                        // CAMINO 2: Última Unidad
+                        <p className="low-stock">
+                            ¡ÚLTIMA UNIDAD!
+                        </p>
+                    ) : producto.stock > 1 && producto.stock < 10 ? (
+                        // CAMINO 3: Stock bajo
+                        <p className="low-stock">
+                            ¡Solo quedan {producto.stock} unidades!
+                        </p>
+                    ) : (
+                        // CAMINO 4: Stock suficiente
+                        null)}
+                </div>
+            </div>
         </article>
     );
 };
