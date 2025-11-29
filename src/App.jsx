@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-// ❌ ELIMINAR: import Home from "./Components/Home/Home" 
-// 🟢 AÑADIR:
-import ProductList from "./Components/ProductList/ProductList" 
 import Navbar from "./Components/Navbar/Navbar"
+import ProductList from "./Components/ProductList/ProductList" 
 import DetailsProduct from "./Components/DetailsProduct/DetailsProduct"
-
+import MiCuenta from "./Components/MiCuenta/MiCuenta"
+import Register from "./Components/Register/Register" 
 
 function App() {
   return (
@@ -13,9 +12,10 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={ <ProductList/> }/> 
-          
           <Route path="/producto/:id" element={<DetailsProduct />} />
-          
+          <Route path="/micuenta" element={<MiCuenta />} />           
+          <Route path="/registro" element={<Register />} /> 
+
         </Routes>
       </Router>
     </>

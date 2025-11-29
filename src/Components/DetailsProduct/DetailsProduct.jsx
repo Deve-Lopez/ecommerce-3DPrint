@@ -92,7 +92,7 @@ const fetchProducto = async () => {
                 
                 <div className="product-infos">
                     <h1 className="product-title">{producto.nombre}</h1>
-                    <p className="product-id">SKU: {producto.id}</p>
+                    <p className="product-id">SKU: {producto.sku}</p>
                     <p className="product-category">Categoría: {producto.categoria || 'Impresión 3D'}</p> 
                     
                     <p className="price">{producto.precio}€</p>

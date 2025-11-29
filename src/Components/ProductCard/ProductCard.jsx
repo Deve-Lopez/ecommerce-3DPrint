@@ -62,8 +62,6 @@ const ProductCard = ({ producto, onImageClick }) => {
                         >
                             +
                         </button>
-
-                        
                     </div>
                 </div>
 

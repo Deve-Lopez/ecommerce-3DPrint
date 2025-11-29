@@ -24,7 +24,7 @@ const Navbar = () => {
         </ul>
       </nav>
       <div className="icons">
-        <Link to="/micuenta" className='icon-button'>
+        <Link to="/MiCuenta" className='icon-button'>
         <span className="login-link">Iniciar Sesión</span>        
         <i className='fa solid fa-user'></i>
         </Link>        
