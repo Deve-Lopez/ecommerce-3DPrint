@@ -10,7 +10,7 @@ const ProductList = () => {
     const [orden, setOrden] = useState("Relevante");
     const [filtros, setFiltros] = useState({ categorias: [], tipos: [] });
 
-    // 🆕 paginación
+    // Paginación
     const [pagina, setPagina] = useState(1);
     const [total, setTotal] = useState(0);
     const limit = 15;
@@ -60,7 +60,6 @@ const ProductList = () => {
         const matchCategoria =
             filtros.categorias.length === 0 ||
             filtros.categorias.includes(producto.categoria);
-
         return matchCategoria;
     });
 
@@ -74,7 +73,7 @@ const ProductList = () => {
     const productosOrdenados = [...productosFiltrados].sort((a, b) => {
         if (orden === "Precio: Menor a Mayor") {
             return a.precio - b.precio;
-        }   
+        }
         if (orden === "Precio: Mayor a Menor") {
             return b.precio - a.precio;
         }
@@ -140,7 +139,7 @@ const ProductList = () => {
                     )}
                 </div>
 
-                {/* 🆕 PAGINACIÓN */}
+                {/* Paginación */}
                 <div className="pagination">
                     <button
                         disabled={pagina === 1}
