@@ -1,0 +1,245 @@
+/* Variables de referencia (si no están definidas globalmente, usa los valores) */
+/* :root {
+    --border-color: #d1d5db;
+    --primary-color: #333333;
+    --secondary-color: #6b7280;
+    --accent-light: #4c3e37;
+    --bg-gray: #f9fafb;
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+} */
+
+
+/* ==================================== */
+/* 1. LAYOUT PRINCIPAL Y CONTENEDOR */
+/* ==================================== */
+.product-details {
+    /* Layout: Imagen grande a la izquierda, info a la derecha */
+    display: grid;
+    grid-template-columns: 55% 45%; 
+    gap: 60px; 
+    
+    max-width: 1280px;
+    margin: 50px auto;
+    padding: 0 40px;
+    
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+
+/* ==================================== */
+/* 2. IMAGEN PRINCIPAL */
+/* ==================================== */
+.product-details .image-principal { 
+    grid-column: 1 / 2;
+    width: 100%;
+    /* Altura definida para un impacto visual similar a la relación 4/5 */
+    min-height: 500px;
+    height: auto; 
+    border: 1px solid var(--border-color, #d1d5db);
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0,0,0,0.1));
+}
+
+
+/* ==================================== */
+/* 3. INFORMACIÓN DEL PRODUCTO */
+/* ==================================== */
+.product-infos {
+    grid-column: 2 / 3;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--primary-color, #333333);
+    margin-bottom: 5px;
+}
+
+.product-id, .product-category {
+    font-size: 0.95rem;
+    color: var(--secondary-color, #6b7280);
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #56453F; /* Color principal de acento (como en ProductCard) */
+    margin: 20px 0 30px 0;
+    border-top: 1px solid var(--border-color, #d1d5db);
+    padding-top: 15px;
+}
+
+.descripcion {
+    font-size: 1rem;
+    color: var(--primary-color, #333333);
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+
+/* ==================================== */
+/* 4. SECCIÓN DE STOCK Y ALERTA */
+/* ==================================== */
+.stock-alert-details {
+    margin-bottom: 25px;
+    padding: 8px 0;
+    font-weight: 700;
+}
+
+.status-in-stock {
+    color: #16a34a; /* Verde para buen stock */
+}
+
+.status-low-stock {
+    color: #B00100; /* Rojo/Advertencia como en ProductCard */
+    font-weight: 700;
+}
+
+.status-no-stock {
+    /* Estilo similar a 'no-stock' en ProductCard */
+    color: #F0F0E5; 
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    background-color: #56453F;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+
+/* ==================================== */
+/* 5. SELECTOR DE CANTIDAD Y BOTÓN COMPRAR */
+/* ==================================== */
+.quantity-and-add {
+    display: flex;
+    align-items: stretch; /* Estirar elementos verticalmente */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.quantity-selector-details {
+    /* Controles de cantidad: Mismo borde y estilo que en ProductCard */
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color, #d1d5db);
+    border-radius: 6px;
+    overflow: hidden;
+    height: 50px; /* Altura fija para alinearse con el botón */
+}
+
+.btn-quantity-details {
+    background-color: var(--bg-gray, #f9fafb);
+    border: none;
+    padding: 10px 18px; /* Más padding que en la tarjeta para ser más prominente */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.5rem; /* Más grande */
+    color: var(--primary-color, #333333);
+    transition: background-color 0.2s;
+    line-height: 1;
+}
+
+.btn-quantity-details:hover:not(:disabled) {
+    background-color: #e5e7eb;
+}
+
+.btn-quantity-details:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #e5e7eb;
+}
+
+.quantity-display-details {
+    padding: 0 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color, #333333);
+    background-color: white;
+    border-left: 1px solid var(--border-color, #d1d5db);
+    border-right: 1px solid var(--border-color, #d1d5db);
+    min-width: 40px;
+    text-align: center;
+    display: flex; /* Centrado vertical */
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Botón Añadir al carrito */
+.add-to-cart-details {
+    background-color: #56453F; /* Color principal de acento */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-grow: 1;
+    height: 50px; /* Mima altura que el selector */
+}
+
+.add-to-cart-details:hover:not(:disabled) {
+    background-color: var(--accent-light, #4c3e37);
+    transform: translateY(-1px);
+}
+
+.add-to-cart-details:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+
+/* ==================================== */
+/* 6. OTROS (Nota, Errores, Responsive) */
+/* ==================================== */
+
+.note-details {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px 0;
+    border-top: 1px dashed var(--border-color, #d1d5db); /* Usamos línea discontinua */
+    color: var(--secondary-color, #6b7280);
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 950px) {
+    .product-details {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px;
+        margin: 40px auto;
+    }
+    
+    .product-details .image-principal, .product-infos {
+        grid-column: 1 / -1;
+    }
+    
+    .product-details .image-principal {
+        min-height: 350px;
+    }
+
+    .quantity-and-add {
+        flex-direction: column; 
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .quantity-selector-details {
+        width: 100%; 
+        justify-content: space-between;
+    }
+    
+    .add-to-cart-details {
+        width: 100%; 
+    }
+}

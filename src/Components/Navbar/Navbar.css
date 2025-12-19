@@ -1,0 +1,112 @@
+/* --- LAYOUT PRINCIPAL --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 0rem 1rem;    
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+/* --- LOGO --- */
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: #A47764;
+    cursor: pointer;
+}
+
+.logo span {
+    color: #000;
+}
+
+/* --- ICONOS Y ACCIONES --- */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Estilos base compartidos para botones e iconos */
+.search-button,
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    transition: color 0.2s ease;
+    text-decoration: none; /* Importante para los Links */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Regla específica para separar texto de icono en el botón de usuario */
+.icon-button {
+    position: relative;
+    gap: 0.5rem; /* Separa el texto "Iniciar Sesión" del icono */
+}
+
+/* HOVER UNIFICADO: Al pasar el ratón por el botón, cambia el color del botón y del texto hijo */
+.search-button:hover,
+.icon-button:hover {
+    color: #A47764;
+}
+
+/* TEXTO DE INICIAR SESIÓN */
+.login-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    transition: color 0.2s ease;
+}
+
+.icon-button:hover .login-link {
+    color: #A47764;
+}
+
+/* --- BARRA DE BÚSQUEDA --- */
+.search-bar {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* --- CESTA Y CONTADOR --- */
+.card-value {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+.card-value:hover {
+    color: #A47764;
+}
+
+/* Contador circular rojo sobre el carrito */
+.counter {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: #fff;
+    background-color: #A47764;
+}

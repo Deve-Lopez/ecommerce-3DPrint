@@ -1,0 +1,164 @@
+/* ProductList.css */
+
+/* --- VARIABLES GLOBALES --- */
+/* Las definimos aquí para que las herede ProductCard también */
+:root {
+  --primary-color: #333333;
+  --secondary-color: #666666;
+  --accent-color: #A47764;
+  --accent-light: #E4C7B8;
+  --bg-gray: #f9fafb;
+  --border-color: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* --- LAYOUT GENERAL --- */
+.shop-layout {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* --- SIDEBAR (FILTROS) --- */
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.sidebar__title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+}
+
+.filter-group {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: white;
+}
+
+.filter-group__title {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+.filter-option input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--accent-color);
+  width: 16px;
+  height: 16px;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header de la sección principal */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.content-header__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+.sort-control {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+.sort-control select {
+  margin-left: 0.5rem;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* --- GRID DE PRODUCTOS --- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+/* Mensaje de Error General */
+.error-message {
+  color: #ef4444;
+  font-weight: bold;
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: 2rem;
+  background: #fef2f2;
+  border-radius: 8px;
+}
+
+/* Contenedor de paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espacio entre botones y texto */
+    margin: 30px 0;
+    flex-wrap: wrap; /* Para que sea responsive en pantallas pequeñas */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Botones */
+.pagination button {
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Botón activo / hover */
+.pagination button:hover:not(:disabled) {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+/* Botones deshabilitados */
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Texto "Página X de Y" */
+.pagination span {
+    padding: 8px 10px;
+    color: #555;
+}
