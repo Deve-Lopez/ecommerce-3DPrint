@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Navbar from "./Components/Navbar/Navbar"
-import ProductList from "./Components/ProductList/ProductList" 
 import DetailsProduct from "./Components/DetailsProduct/DetailsProduct"
 import MiCuenta from "./Components/MiCuenta/MiCuenta"
-import Register from "./Components/Register/Register" 
+import Register from "./Components/Register/Register"
+import Home from "./Components/Home/Home" 
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Navbar/>
         <Routes>
-          <Route path="/" element={ <ProductList/> }/> 
+          <Route path="/" element={ <Home/> }/> 
           <Route path="/producto/:id" element={<DetailsProduct />} />
           <Route path="/micuenta" element={<MiCuenta />} />           
           <Route path="/registro" element={<Register />} /> 

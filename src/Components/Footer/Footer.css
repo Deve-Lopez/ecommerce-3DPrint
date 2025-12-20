@@ -1,0 +1,98 @@
+/* --- FOOTER LAYOUT PRINCIPAL --- */
+footer {
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    padding: 2.5rem 1rem;
+    margin-top: 4rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+/* --- COLUMNA UNO: CONTACTO --- */
+.columna-uno {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.columna-uno a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    transition: color 0.2s ease;
+}
+
+.columna-uno a:hover {
+    color: #A47764;
+}
+
+.a-location {
+    align-items: flex-start;
+}
+
+/* --- ICONOS --- */
+.icono {
+    font-size: 20px;
+    color: #333;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.columna-uno a:hover .icono {
+    color: #A47764;
+}
+
+/* --- COLUMNA DOS: LOGO Y TEXTO --- */
+.columna-dos {
+    max-width: 420px;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: #A47764;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.logo span {
+    color: #000;
+}
+
+.texto {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .logo {
+        font-size: 30px;
+    }
+
+    .columna-dos {
+        max-width: 100%;
+    }
+}
