@@ -3,7 +3,8 @@ import Navbar from "./Components/Navbar/Navbar"
 import DetailsProduct from "./Components/DetailsProduct/DetailsProduct"
 import MiCuenta from "./Components/MiCuenta/MiCuenta"
 import Register from "./Components/Register/Register"
-import Home from "./Components/Home/Home" 
+import Home from "./Components/Home/Home"
+import Contacto from "./Components/Contacto/Contacto" 
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/" element={ <Home/> }/> 
           <Route path="/producto/:id" element={<DetailsProduct />} />
           <Route path="/micuenta" element={<MiCuenta />} />           
-          <Route path="/registro" element={<Register />} /> 
+          <Route path="/registro" element={<Register />} />
+          <Route path="/contacto" element={<Contacto/>}/> 
 
         </Routes>
       </Router>

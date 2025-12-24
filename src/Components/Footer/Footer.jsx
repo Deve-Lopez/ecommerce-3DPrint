@@ -41,6 +41,12 @@ const Footer = () => {
                     </p>
 
                 </div>
+
+                <div className="columna-tres">
+                    <Link to="/contacto" className="contacto-boton">
+                    Contacto
+                    </Link>
+                </div>
                
             </div>
         </footer>
